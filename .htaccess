@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+
+    # Blokir akses langsung ke file .env
+    RewriteRule ^\.env - [F,L]
+
+    # Lewatkan jika bukan dalam folder /public/
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Lewatkan jika file atau direktori memang ada
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # Redirect semua request ke folder /public/
+    RewriteRule ^(.*)$ /public/$1 
+
+    # Arahkan root request ke public/index.php
+    RewriteRule ^(/)?$ public/index.php [L]
+</IfModule>

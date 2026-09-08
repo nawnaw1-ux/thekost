@@ -1,0 +1,9 @@
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animated-stroke {
+    animation: dash 2s ease-out forwards;
+}
